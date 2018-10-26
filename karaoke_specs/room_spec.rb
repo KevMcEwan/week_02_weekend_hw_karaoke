@@ -12,7 +12,7 @@ class RoomTest < MiniTest::Test
     @guest2 = Guest.new("Lady Gaga")
     @guest3 = Guest.new("Freddie Mercury")
 
-    guests = []
+    @guests = []
 
     @song1 = Song.new("Paradise City")
     @song2 = Song.new("Song 2")
@@ -20,7 +20,7 @@ class RoomTest < MiniTest::Test
 
     song_list = []
 
-    @room1 = Room.new("GNR room", guests, song_list)
+    @room1 = Room.new("GNR room", @guests, song_list)
 
   end
 
@@ -53,6 +53,32 @@ class RoomTest < MiniTest::Test
     actual = @room1.guests.count
     assert_equal(expected, actual)
   end
+
+
+  def test_guest_has_checked_in
+    expected = "Axl Rose"
+    @room1.check_in_guest(@guest1.name)
+    actual = @room1.guests[0]
+    assert_equal(expected, actual)
+  end
+
+
+  def test_check_out_guest
+    expected = []
+    @room1.guests << @guest2
+    @room1.check_out_guest(@guest2)
+    actual = @room1.guests
+    assert_equal(expected, actual)
+  end
+
+  # def add_song_to_song_list
+  #   expected = "Song 2"
+  #   actual =
+  #   assert_equal(expected, actual)
+  # end
+
+
+
 
 
 

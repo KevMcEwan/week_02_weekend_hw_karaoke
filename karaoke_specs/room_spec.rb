@@ -25,9 +25,35 @@ class RoomTest < MiniTest::Test
   end
 
   def test_room_name
-  expected = "GNR room"
-  actual = @room1.name
-  assert_equal(expected, actual)
+    expected = "GNR room"
+    actual = @room1.name
+    assert_equal(expected, actual)
   end
+
+  def test_get_song_list
+    expected = []
+    actual = @room1.song_list
+    assert_equal(expected, actual)
+  end
+
+  def test_count_songs_in_song_list
+    expected = 0
+    actual = @room1.song_list.count
+    assert_equal(expected, actual)
+  end
+
+  def test_get_guest_list
+    expected = []
+    actual = @room1.guests
+    assert_equal(expected, actual)
+  end
+
+  def test_count_guests_in_guest_list
+    expected = 0
+    actual = @room1.guests.count
+    assert_equal(expected, actual)
+  end
+
+
 
 end

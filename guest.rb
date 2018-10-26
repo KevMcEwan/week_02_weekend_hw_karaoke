@@ -2,8 +2,11 @@ class Guest
 
   attr_reader :name
 
-  def initialize(name)
+  attr_accessor :wallet
+
+  def initialize(name, wallet)
     @name = name
+    @wallet = wallet
   end
 
 

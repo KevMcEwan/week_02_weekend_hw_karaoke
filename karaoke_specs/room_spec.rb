@@ -8,9 +8,9 @@ require_relative("../song")
 class RoomTest < MiniTest::Test
 
   def setup
-    @guest1 = Guest.new("Axl Rose")
-    @guest2 = Guest.new("Lady Gaga")
-    @guest3 = Guest.new("Freddie Mercury")
+    @guest1 = Guest.new("Axl Rose", 10)
+    @guest2 = Guest.new("Lady Gaga", 12)
+    @guest3 = Guest.new("Freddie Mercury", 20)
 
     @guests = []
 
@@ -20,7 +20,7 @@ class RoomTest < MiniTest::Test
 
     @song_list = []
 
-    @room1 = Room.new("GNR room", @guests, @song_list, 6, 2.50)
+    @room1 = Room.new("GNR room", @guests, @song_list, 6, 2.50, 0)
 
   end
 

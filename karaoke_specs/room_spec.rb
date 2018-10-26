@@ -20,7 +20,7 @@ class RoomTest < MiniTest::Test
 
     @song_list = []
 
-    @room1 = Room.new("GNR room", @guests, @song_list, 6)
+    @room1 = Room.new("GNR room", @guests, @song_list, 6, 2.50)
 
   end
 
@@ -55,8 +55,6 @@ class RoomTest < MiniTest::Test
     actual = @room1.guests.count
     assert_equal(expected, actual)
   end
-
-
 
 
   def test_guest_has_checked_in
@@ -95,6 +93,25 @@ class RoomTest < MiniTest::Test
     actual = @room1.capacity
     assert_equal(expected, actual)
   end
+
+  def test_block_check_in_if_capacity_reached
+    expected = "Room full"
+    @room1.capacity = 0
+    @room1.check_in_guest(@guest1.name)
+    actual = if
+      @room1.guests.any? { |guest| guest == "Axl Rose"} == false
+      then "Room full"
+    end
+    assert_equal(expected, actual)
+  end
+
+  def test_guest_present
+    expected = true
+    @room1.check_in_guest(@guest1.name)
+    actual = @room1.check_guest_present(@guest1.name)
+    assert_equal(expected, actual)
+  end
+
 
 
 

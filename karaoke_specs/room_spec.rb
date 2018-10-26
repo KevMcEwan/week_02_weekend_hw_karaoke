@@ -18,11 +18,13 @@ class RoomTest < MiniTest::Test
     @song2 = Song.new("Song 2")
     @song3 = Song.new("Suspicious Minds")
 
-    song_list = []
+    @song_list = []
 
-    @room1 = Room.new("GNR room", @guests, song_list)
+    @room1 = Room.new("GNR room", @guests, @song_list, 6)
 
   end
+
+
 
   def test_room_name
     expected = "GNR room"
@@ -55,10 +57,12 @@ class RoomTest < MiniTest::Test
   end
 
 
+
+
   def test_guest_has_checked_in
-    expected = "Axl Rose"
+    expected = true
     @room1.check_in_guest(@guest1.name)
-    actual = @room1.guests[0]
+    actual = @room1.guests.any? { |guest| guest == "Axl Rose"}
     assert_equal(expected, actual)
   end
 
@@ -71,11 +75,26 @@ class RoomTest < MiniTest::Test
     assert_equal(expected, actual)
   end
 
-  # def add_song_to_song_list
-  #   expected = "Song 2"
-  #   actual =
-  #   assert_equal(expected, actual)
-  # end
+  def test_add_song_to_song_list
+    expected = true
+    @room1.add_song_to_song_list(@song2.name)
+    actual = @room1.song_list.any? { |song| song == "Song 2"}
+    assert_equal(expected, actual)
+  end
+
+  def test_count_song_list
+    expected = 2
+    @room1.add_song_to_song_list(@song1.name)
+    @room1.add_song_to_song_list(@song2.name)
+    actual = @room1.song_list.count
+    assert_equal(expected, actual)
+  end
+
+  def test_room_capacity
+    expected = 6
+    actual = @room1.capacity
+    assert_equal(expected, actual)
+  end
 
 
 

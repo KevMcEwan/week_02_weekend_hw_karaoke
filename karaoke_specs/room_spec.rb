@@ -8,9 +8,9 @@ require_relative("../song")
 class RoomTest < MiniTest::Test
 
   def setup
-    @guest1 = Guest.new("Axl Rose", 10)
-    @guest2 = Guest.new("Lady Gaga", 12)
-    @guest3 = Guest.new("Freddie Mercury", 20)
+    @guest1 = Guest.new("Axl Rose", 10, "Paradise City")
+    @guest2 = Guest.new("Lady Gaga", 12, "Just Dance")
+    @guest3 = Guest.new("Freddie Mercury", 20, "Somebody to Love")
 
     @guests = []
 
@@ -137,7 +137,11 @@ class RoomTest < MiniTest::Test
   end
 
 
-  
+  def test_favourite_song_on_song_list
+    expected = "This is my jam!"
+    actual = @room1.favourite_song_is_on_song_list(@guest1.favourite_song)
+    assert_equal(expected, actual)
+  end
 
 
 

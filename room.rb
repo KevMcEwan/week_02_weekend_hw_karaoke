@@ -40,4 +40,10 @@ class Room
     @till += @entry_fee
   end
 
+  def favourite_song_is_on_song_list(guest)
+    @song_list.any? { |song| song == guest}
+      return "This is my jam!"
+  end
+
+
 end

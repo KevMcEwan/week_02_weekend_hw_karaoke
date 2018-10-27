@@ -9,6 +9,11 @@ class Guest
     @wallet = wallet
   end
 
+  def pay_entry_fee(fee)
+    @wallet -= fee
+  end
+
+
 
 
 end

@@ -112,7 +112,32 @@ class RoomTest < MiniTest::Test
     assert_equal(expected, actual)
   end
 
+  def test_till_balance
+    expected = 0
+    actual = @room1.till
+    assert_equal(expected, actual)
+  end
 
+  def test_customer_wallet
+    expected = 10
+    actual = @guest1.wallet
+    assert_equal(expected, actual)
+  end
+
+
+
+  def test_guest_pays_entry_fee
+    @room1.guest_pays_entry_fee(@guest1, @entry_fee)
+    expected1 = 7.50
+    expected2 = 2.50
+    actual1 = @guest1.wallet
+    actual2 = @room1.till
+    assert_equal(expected1, actual1)
+    assert_equal(expected2, actual2)
+  end
+
+
+  
 
 
 

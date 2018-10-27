@@ -21,6 +21,8 @@ class Room
     end
   end
 
+
+
   def check_out_guest(guest)
     @guests.delete(guest)
   end
@@ -31,6 +33,11 @@ class Room
 
   def check_guest_present(guest_name)
     @guests.any? { |guest| guest == guest_name}
+  end
+
+  def guest_pays_entry_fee(guest_name, entry_fee)
+    guest_name.pay_entry_fee(@entry_fee)
+    @till += @entry_fee
   end
 
 end

@@ -24,5 +24,11 @@ class GuestTest < MiniTest::Test
     assert_equal(expected, actual)
   end
 
+  def test_pay_entry_fee
+    expected = 7.50
+    actual = @guest1.pay_entry_fee(2.50)
+    assert_equal(expected, actual)
+  end
+
 
 end
